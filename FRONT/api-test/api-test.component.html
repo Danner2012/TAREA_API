@@ -1,0 +1,19 @@
+<div class="container">
+  <h2 style="text-align: center;">Lista de Pokémon Django - PokeAPI</h2>
+  
+  <div *ngIf="errorMessage" class="error">
+    <h3>{{ errorMessage }}</h3>
+  </div>
+
+  <div class="pokemon-list" *ngIf="!errorMessage && pokemon.length > 0">
+    <div *ngFor="let p of pokemon" class="pokemon-card">
+      <h3>{{ p.name | titlecase }}</h3>
+      <img [src]="p.image" [alt]="p.name" *ngIf="p.image">
+      <p *ngIf="!p.image">Sin imagen</p>
+    </div>
+  </div>
+
+  <div *ngIf="!errorMessage && pokemon.length === 0" style="text-align: center;">
+    <p>Cargando...</p>
+  </div>
+</div>
